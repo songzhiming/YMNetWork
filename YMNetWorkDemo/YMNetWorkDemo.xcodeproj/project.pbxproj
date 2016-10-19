@@ -15,9 +15,6 @@
 		0159BF0B1DB7991800511B1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0159BF091DB7991800511B1D /* LaunchScreen.storyboard */; };
 		0159BF161DB7991800511B1D /* YMNetWorkDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0159BF151DB7991800511B1D /* YMNetWorkDemoTests.m */; };
 		0159BF211DB7991800511B1D /* YMNetWorkDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0159BF201DB7991800511B1D /* YMNetWorkDemoUITests.m */; };
-		0159BF361DB79A1000511B1D /* YMBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0159BF301DB79A1000511B1D /* YMBaseRequest.m */; };
-		0159BF371DB79A1000511B1D /* YMNetWorkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0159BF331DB79A1000511B1D /* YMNetWorkAgent.m */; };
-		0159BF381DB79A1000511B1D /* YMNetWorkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0159BF351DB79A1000511B1D /* YMNetWorkConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,13 +51,6 @@
 		0159BF1C1DB7991800511B1D /* YMNetWorkDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YMNetWorkDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0159BF201DB7991800511B1D /* YMNetWorkDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMNetWorkDemoUITests.m; sourceTree = "<group>"; };
 		0159BF221DB7991800511B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0159BF2F1DB79A1000511B1D /* YMBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMBaseRequest.h; sourceTree = "<group>"; };
-		0159BF301DB79A1000511B1D /* YMBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMBaseRequest.m; sourceTree = "<group>"; };
-		0159BF311DB79A1000511B1D /* YMNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMNetWork.h; sourceTree = "<group>"; };
-		0159BF321DB79A1000511B1D /* YMNetWorkAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMNetWorkAgent.h; sourceTree = "<group>"; };
-		0159BF331DB79A1000511B1D /* YMNetWorkAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMNetWorkAgent.m; sourceTree = "<group>"; };
-		0159BF341DB79A1000511B1D /* YMNetWorkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMNetWorkConfig.h; sourceTree = "<group>"; };
-		0159BF351DB79A1000511B1D /* YMNetWorkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMNetWorkConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +101,6 @@
 		0159BEFA1DB7991800511B1D /* YMNetWorkDemo */ = {
 			isa = PBXGroup;
 			children = (
-				0159BF2E1DB79A1000511B1D /* YMNetWork */,
 				0159BEFE1DB7991800511B1D /* AppDelegate.h */,
 				0159BEFF1DB7991800511B1D /* AppDelegate.m */,
 				0159BF011DB7991800511B1D /* ViewController.h */,
@@ -149,20 +138,6 @@
 				0159BF221DB7991800511B1D /* Info.plist */,
 			);
 			path = YMNetWorkDemoUITests;
-			sourceTree = "<group>";
-		};
-		0159BF2E1DB79A1000511B1D /* YMNetWork */ = {
-			isa = PBXGroup;
-			children = (
-				0159BF2F1DB79A1000511B1D /* YMBaseRequest.h */,
-				0159BF301DB79A1000511B1D /* YMBaseRequest.m */,
-				0159BF311DB79A1000511B1D /* YMNetWork.h */,
-				0159BF321DB79A1000511B1D /* YMNetWorkAgent.h */,
-				0159BF331DB79A1000511B1D /* YMNetWorkAgent.m */,
-				0159BF341DB79A1000511B1D /* YMNetWorkConfig.h */,
-				0159BF351DB79A1000511B1D /* YMNetWorkConfig.m */,
-			);
-			path = YMNetWork;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,12 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0159BF381DB79A1000511B1D /* YMNetWorkConfig.m in Sources */,
-				0159BF361DB79A1000511B1D /* YMBaseRequest.m in Sources */,
 				0159BF031DB7991800511B1D /* ViewController.m in Sources */,
 				0159BF001DB7991800511B1D /* AppDelegate.m in Sources */,
 				0159BEFD1DB7991800511B1D /* main.m in Sources */,
-				0159BF371DB79A1000511B1D /* YMNetWorkAgent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
