@@ -18,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // 天气接口
+    YMBaseRequest *request = [[YMBaseRequest alloc]init];
+    request.baseUrl = @"http://www.weather.com.cn/data/sk/101190408.html";
+    [request startWithCompletionBlockWithSuccess:^(__kindof YMBaseRequest * _Nonnull request) {
+        NSLog(@"request---%@",request.responseObject);
+    } failure:^(__kindof YMBaseRequest * _Nonnull request) {
+        NSLog(@"eroor=----%@",request.error);
+    }];
     return YES;
 }
 
