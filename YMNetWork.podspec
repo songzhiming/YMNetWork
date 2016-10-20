@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.version      = "0.0.1"
   s.summary      = "YMNetWork is a easy network Based on AFNetworking"
   s.description  = <<-DESC
-                      YMNetWork is a easy network Based on AFNetworkin
+                      YMNetWork is a easy network Based on AFNetworking. YMNetWork learn from YTKNetWork.
                    DESC
 
   s.homepage     = "https://github.com/songzhiming/YMNetWork"
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "7.0"
 
   s.source       = { :git => "https://github.com/songzhiming/YMNetWork.git", :tag => "#{s.version}" }
-  s.source_files = "YMNetWork/YMNetWork/YMNetWork/*.{h,m}"
+  s.source_files = "YMNetWork/*.{h,m}"
 
   s.framework = "CFNetwork"
 

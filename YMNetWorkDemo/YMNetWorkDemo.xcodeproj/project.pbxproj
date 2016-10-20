@@ -15,6 +15,7 @@
 		0159BF0B1DB7991800511B1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0159BF091DB7991800511B1D /* LaunchScreen.storyboard */; };
 		0159BF161DB7991800511B1D /* YMNetWorkDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0159BF151DB7991800511B1D /* YMNetWorkDemoTests.m */; };
 		0159BF211DB7991800511B1D /* YMNetWorkDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0159BF201DB7991800511B1D /* YMNetWorkDemoUITests.m */; };
+		326D23DB3AB15FEFF56304F6 /* libPods-YMNetWorkDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E63CDC5B5B3CAF131308A1 /* libPods-YMNetWorkDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,9 @@
 		0159BF1C1DB7991800511B1D /* YMNetWorkDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YMNetWorkDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0159BF201DB7991800511B1D /* YMNetWorkDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMNetWorkDemoUITests.m; sourceTree = "<group>"; };
 		0159BF221DB7991800511B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F2F856904BE31791B03DB47 /* Pods-YMNetWorkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMNetWorkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-YMNetWorkDemo/Pods-YMNetWorkDemo.release.xcconfig"; sourceTree = "<group>"; };
+		E8E63CDC5B5B3CAF131308A1 /* libPods-YMNetWorkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YMNetWorkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7BC95C2D592DBCF325EB9B6 /* Pods-YMNetWorkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YMNetWorkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YMNetWorkDemo/Pods-YMNetWorkDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				326D23DB3AB15FEFF56304F6 /* libPods-YMNetWorkDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,8 @@
 				0159BF141DB7991800511B1D /* YMNetWorkDemoTests */,
 				0159BF1F1DB7991800511B1D /* YMNetWorkDemoUITests */,
 				0159BEF91DB7991800511B1D /* Products */,
+				B39C692FA54DB37FFD5DFBA6 /* Pods */,
+				035271DBEDE7C91AEA749F6C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +147,23 @@
 			path = YMNetWorkDemoUITests;
 			sourceTree = "<group>";
 		};
+		035271DBEDE7C91AEA749F6C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8E63CDC5B5B3CAF131308A1 /* libPods-YMNetWorkDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B39C692FA54DB37FFD5DFBA6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F7BC95C2D592DBCF325EB9B6 /* Pods-YMNetWorkDemo.debug.xcconfig */,
+				6F2F856904BE31791B03DB47 /* Pods-YMNetWorkDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0159BF251DB7991800511B1D /* Build configuration list for PBXNativeTarget "YMNetWorkDemo" */;
 			buildPhases = (
+				8C2870D411A0C552A0A57CEB /* [CP] Check Pods Manifest.lock */,
 				0159BEF41DB7991800511B1D /* Sources */,
 				0159BEF51DB7991800511B1D /* Frameworks */,
 				0159BEF61DB7991800511B1D /* Resources */,
+				E8018A8BB517FDB525BA67E7 /* [CP] Embed Pods Frameworks */,
+				DB6C3AAA90E26BD2810CFAAB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -267,6 +294,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8C2870D411A0C552A0A57CEB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DB6C3AAA90E26BD2810CFAAB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YMNetWorkDemo/Pods-YMNetWorkDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8018A8BB517FDB525BA67E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YMNetWorkDemo/Pods-YMNetWorkDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0159BEF41DB7991800511B1D /* Sources */ = {
@@ -420,6 +495,7 @@
 		};
 		0159BF261DB7991800511B1D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7BC95C2D592DBCF325EB9B6 /* Pods-YMNetWorkDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YMNetWorkDemo/Info.plist;
@@ -431,6 +507,7 @@
 		};
 		0159BF271DB7991800511B1D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F2F856904BE31791B03DB47 /* Pods-YMNetWorkDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YMNetWorkDemo/Info.plist;
@@ -505,6 +582,7 @@
 				0159BF271DB7991800511B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0159BF281DB7991800511B1D /* Build configuration list for PBXNativeTarget "YMNetWorkDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +591,7 @@
 				0159BF2A1DB7991800511B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0159BF2B1DB7991800511B1D /* Build configuration list for PBXNativeTarget "YMNetWorkDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +600,7 @@
 				0159BF2D1DB7991800511B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
