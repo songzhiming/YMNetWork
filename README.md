@@ -11,5 +11,5 @@ To use YMNetWork add the following to your Podfile
  
 ## License
 
-YTKNetwork is available under the MIT license. See the LICENSE file for more info.
+YMNetWork is available under the MIT license. See the LICENSE file for more info.
 
