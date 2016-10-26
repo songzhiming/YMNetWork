@@ -19,12 +19,25 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     // 天气接口
+//    YMBaseRequest *request = [[YMBaseRequest alloc]init];
+//    request.baseUrl = @"http://www.weather.com.cn/data/sk/101190408.html";
+//    [request startWithCompletionBlockWithSuccess:^(__kindof YMBaseRequest * _Nonnull request) {
+//        NSLog(@"request---%@",request.responseObject);
+//    } failure:^(__kindof YMBaseRequest * _Nonnull request) {
+//        NSLog(@"eroor=----%@",request.error);
+//    }];
+    // 下载功能
     YMBaseRequest *request = [[YMBaseRequest alloc]init];
-    request.baseUrl = @"http://www.weather.com.cn/data/sk/101190408.html";
-    [request startWithCompletionBlockWithSuccess:^(__kindof YMBaseRequest * _Nonnull request) {
-        NSLog(@"request---%@",request.responseObject);
+    request.requestMethod = YMRequestMethodDownload;
+    request.baseUrl = @"http://dldir1.qq.com/qqfile/QQforMac/QQ_V5.2.0.dmg";
+    request.downLoadFilePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    // 获取tmp目录路径
+    [request downloadWithBlock:^(NSProgress * _Nonnull progress) {
+        NSLog(@"progress---%@",progress);
+    } success:^(__kindof YMBaseRequest * _Nonnull request) {
+        NSLog(@"路径---%@",request.responseObject);
     } failure:^(__kindof YMBaseRequest * _Nonnull request) {
-        NSLog(@"eroor=----%@",request.error);
+        NSLog(@"error---%@",request);
     }];
     return YES;
 }

@@ -80,6 +80,8 @@ typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *progress);
 @property (nonatomic, assign) YMRequestMethod requestMethod;
 // 请求的头  默认nil    
 @property (nonatomic, strong,nullable) NSDictionary *requestHeaderField;
+// 下载文件的路径   如果没有 filePath = downLoadFilePath + url.lastPathComponent
+@property (nonatomic, strong,) NSString *downLoadFilePath;
 
 #pragma mark - 
 + (instancetype)new  NS_UNAVAILABLE;
@@ -90,10 +92,12 @@ typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *progress);
 - (void)uploadFileWithprogressBlock:(nullable AFURLSessionTaskProgressBlock)progress
                             success:(nullable YMRequestCompletionBlock)success
                             failure:(nullable YMRequestCompletionBlock)failure;
-#pragma mark todo
+// 下载文件
 - (void)downloadWithBlock:(nullable AFURLSessionTaskProgressBlock)progress
                   success:(nullable YMRequestCompletionBlock)success
                   failure:(nullable YMRequestCompletionBlock)failure;
+// 取消
+- (void)cancel;
 
 - (void)clearCompletionBlock;
 

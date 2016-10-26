@@ -39,7 +39,7 @@
 
 
 #pragma mark - description
-- (NSString *)description{
-    return [NSString stringWithFormat:@"<%@: %p>{ baseURL: %@ } ", NSStringFromClass([self class]), self, self.baseUrl];
-}
+//- (NSString *)description{
+//    return [NSString stringWithFormat:@"<%@: %p>{ baseURL: %@ } ", NSStringFromClass([self class]), self, self.baseUrl];
+//}
 @end

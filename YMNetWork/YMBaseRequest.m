@@ -77,8 +77,14 @@
     self.downloadProgressBlock = progress;
     [self startWithCompletionBlockWithSuccess:success failure:failure];
 }
-#pragma mark - description
-- (NSString *)description{
-    return @"YMBaseRequest";
+
+// 取消
+- (void)cancel
+{
+    [[YMNetWorkAgent sharedInstance] removeRequest:self];
 }
+#pragma mark - description
+//- (NSString *)description{
+//    return @"YMBaseRequest";
+//}
 @end

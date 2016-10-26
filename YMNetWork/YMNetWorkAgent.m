@@ -81,12 +81,50 @@
         case YMRequestMethodUpload:
             return [self uploadTaskWithRequest:request HTTPMethod:@"POST" requestSerializer:requestSerializer URLString:url parameters:param constructingBodyWithBlock:constructingBlock error:error];
         case YMRequestMethodDownload:
-#pragma mark  todo
+            return [self downloadTaskWithRequest:request HTTPMethod:@"GET" requestSerializer:requestSerializer URLString:url parameters:param constructingBodyWithBlock:constructingBlock error:error];
             return nil;
     }
 }
 
+// 下载Task
+- (NSURLSessionDownloadTask *)downloadTaskWithRequest:(YMBaseRequest *)ymBaseRequest
+                                     HTTPMethod:(NSString *)method
+                              requestSerializer:(AFHTTPRequestSerializer *)requestSerializer
+                                      URLString:(NSString *)URLString
+                                     parameters:(id)parameters
+                      constructingBodyWithBlock:(nullable void (^)(id <AFMultipartFormData> formData))block
+                                          error:(NSError * _Nullable __autoreleasing *)error {
+    NSMutableURLRequest *request = nil;
+    request = [requestSerializer requestWithMethod:@"GET" URLString:URLString parameters:parameters error:error];
+    __block NSURLSessionDownloadTask *dataTask = nil;
+    NSString *downloadTargetPath;
+    BOOL isDirectory;
+    if(![[NSFileManager defaultManager] fileExistsAtPath:ymBaseRequest.downLoadFilePath isDirectory:&isDirectory]) {
+        isDirectory = NO;
+    }
+    if (isDirectory) {
+        NSString *fileName = [URLString lastPathComponent];
+        downloadTargetPath = [NSString pathWithComponents:@[ymBaseRequest.downLoadFilePath, fileName]];
+    } else {
+        downloadTargetPath = ymBaseRequest.downLoadFilePath;
+    }
+    dataTask = [_manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (ymBaseRequest.downloadProgressBlock) {
+                ymBaseRequest.downloadProgressBlock(downloadProgress);
+            }
+        });
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        return [NSURL fileURLWithPath:downloadTargetPath isDirectory:NO];
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable _error) {
+        [self handleRequestResult:dataTask responseObject:filePath error:_error];
+    }];
+    return dataTask;
+}
 
+
+
+// 上传Task
 - (NSURLSessionDataTask *)uploadTaskWithRequest:(YMBaseRequest *)ymBaseRequest
                                      HTTPMethod:(NSString *)method
                               requestSerializer:(AFHTTPRequestSerializer *)requestSerializer
@@ -116,6 +154,7 @@
     return dataTask;
 }
 
+// NSURLSessionDataTask
 - (NSURLSessionDataTask *)dataTaskWithHTTPMethod:(NSString *)method
                                requestSerializer:(AFHTTPRequestSerializer *)requestSerializer
                                        URLString:(NSString *)URLString
@@ -245,7 +284,9 @@
 
 
 - (void)removeRequest:(YMBaseRequest *)request{
-    
+    [request.requestTask cancel];
+    [self removeRequestFromRecord:request];
+    [request clearCompletionBlock];
 }
 
 
