@@ -15,18 +15,32 @@ typedef NS_ENUM(NSInteger, YMRequestMethod) {
     YMRequestMethodPOST,
     YMRequestMethodHEAD,
     YMRequestMethodPUT,
-    YMRequestMethodDELETE
+    YMRequestMethodDELETE,
+    YMRequestMethodUpload,
+    YMRequestMethodDownload
 };
 
 @class YMBaseRequest;
-typedef void(^YTKRequestCompletionBlock)(__kindof YMBaseRequest *request);
+@protocol AFMultipartFormData;
+// 成功或者失败      block
+typedef void(^YMRequestCompletionBlock)(__kindof YMBaseRequest *request);
+// 文件表单         block
+typedef void (^AFConstructingBlock)(id<AFMultipartFormData> formData);
+// 上传或者下载的进度 block
+typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *progress);
 
 @interface YMBaseRequest : NSObject
 #pragma mark - block
 // success block
-@property (nonatomic, copy, nullable) YTKRequestCompletionBlock successCompletionBlock;
+@property (nonatomic, copy, nullable) YMRequestCompletionBlock successCompletionBlock;
 // failure block
-@property (nonatomic, copy, nullable) YTKRequestCompletionBlock failureCompletionBlock;
+@property (nonatomic, copy, nullable) YMRequestCompletionBlock failureCompletionBlock;
+// 文件表单  block
+@property (nonatomic, copy, nullable) AFConstructingBlock constructingBodyBlock;
+// 上传进度  block
+@property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock uploadProgressBlock;
+// 下载进度  block
+@property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock downloadProgressBlock;
 
 #pragma mark - response
 //  请求task
@@ -70,8 +84,16 @@ typedef void(^YTKRequestCompletionBlock)(__kindof YMBaseRequest *request);
 #pragma mark - 
 + (instancetype)new  NS_UNAVAILABLE;
 // 开始请求
-- (void)startWithCompletionBlockWithSuccess:(nullable YTKRequestCompletionBlock)success
-                                    failure:(nullable YTKRequestCompletionBlock)failure;
+- (void)startWithCompletionBlockWithSuccess:(nullable YMRequestCompletionBlock)success
+                                    failure:(nullable YMRequestCompletionBlock)failure;
+// 上传文件
+- (void)uploadFileWithprogressBlock:(nullable AFURLSessionTaskProgressBlock)progress
+                            success:(nullable YMRequestCompletionBlock)success
+                            failure:(nullable YMRequestCompletionBlock)failure;
+#pragma mark todo
+- (void)downloadWithBlock:(nullable AFURLSessionTaskProgressBlock)progress
+                  success:(nullable YMRequestCompletionBlock)success
+                  failure:(nullable YMRequestCompletionBlock)failure;
 
 - (void)clearCompletionBlock;
 

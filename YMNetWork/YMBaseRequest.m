@@ -50,16 +50,32 @@
 }
 - (void)clearCompletionBlock {
     // nil out to break the retain cycle.
+    self.uploadProgressBlock = nil;
+    self.downloadProgressBlock = nil;
     self.successCompletionBlock = nil;
     self.failureCompletionBlock = nil;
 }
 
-- (void)startWithCompletionBlockWithSuccess:(nullable YTKRequestCompletionBlock)success
-                                    failure:(nullable YTKRequestCompletionBlock)failure
+- (void)startWithCompletionBlockWithSuccess:(nullable YMRequestCompletionBlock)success
+                                    failure:(nullable YMRequestCompletionBlock)failure
 {
     self.successCompletionBlock = success;
     self.failureCompletionBlock = failure;
     [[YMNetWorkAgent sharedInstance]addRequest:self];
+}
+- (void)uploadFileWithprogressBlock:(nullable AFURLSessionTaskProgressBlock)progress
+                            success:(nullable YMRequestCompletionBlock)success
+                            failure:(nullable YMRequestCompletionBlock)failure;
+{
+    self.uploadProgressBlock = progress;
+    [self startWithCompletionBlockWithSuccess:success failure:failure];
+}
+- (void)downloadWithBlock:(AFURLSessionTaskProgressBlock)progress
+                  success:(YMRequestCompletionBlock)success
+                  failure:(YMRequestCompletionBlock)failure
+{
+    self.downloadProgressBlock = progress;
+    [self startWithCompletionBlockWithSuccess:success failure:failure];
 }
 #pragma mark - description
 - (NSString *)description{
