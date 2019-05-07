@@ -55,7 +55,7 @@
         _manager.completionQueue = _processingQueue;
         _requestsRecord = [NSMutableDictionary dictionary];
         // manger的response 返回格式默认是json，request的请求格式默认是二进制
-        _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain",@"text/html", nil];
+        _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain",@"text/html",@"image/gif", nil];
     }
     return self;
 }

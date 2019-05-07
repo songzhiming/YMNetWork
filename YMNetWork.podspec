@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YMNetWork"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "YMNetWork is a easy network Based on AFNetworking"
   s.description  = <<-DESC
                       YMNetWork is a easy network Based on AFNetworking. YMNetWork learn from YTKNetWork.
